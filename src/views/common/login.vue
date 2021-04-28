@@ -5,7 +5,7 @@
         <div class="login-main">
           <div class="system-title">
             <img class="logo" src="~@/assets/img/logo.png" />
-            <div class="title">体育运动推荐系统</div>
+            <div class="title">个性化体育运动推荐系统</div>
           </div>
           <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" status-icon>
             <el-form-item prop="userName">
@@ -29,7 +29,7 @@
               <el-button class="login-btn-submit" type="primary" @click="dataFormSubmit()">登录</el-button>
             </el-form-item>
             <el-form-item>
-              <el-button class="login-btn-submit" type="warning">注册</el-button>
+              <el-button class="login-btn-submit" type="warning" @click="registerFunc()">注册</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -96,6 +96,11 @@
       getCaptcha () {
         this.dataForm.uuid = getUUID()
         this.captchaPath = this.$http.adornUrl(`/captcha.jpg?uuid=${this.dataForm.uuid}`)
+      },
+      registerFunc () {
+        this.$router.push({
+          path: '/register'
+        })
       }
     }
   }
@@ -167,7 +172,7 @@
           width: 60px;
         }
         .title{
-          font-size: 30px !important;
+          font-size: 20px !important;
           font-weight: 550 !important;
           margin-left: 10px !important;
           color: #5FB878 !important;

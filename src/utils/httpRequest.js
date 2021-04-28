@@ -41,10 +41,16 @@ http.interceptors.response.use(response => {
  * @param {*} actionName action方法名称
  */
 http.adornUrl = (actionName) => {
-  console.log(process.env.NODE_ENV)
   // 非生产环境 && 开启代理, 接口前缀统一使用[/proxyApi/]前缀做代理拦截!
   // return '/renren-fast' + actionName
-  return process.env.NODE_ENV === 'production' ? `/renren-fast${actionName}` : `/proxyApi/renren-fast${actionName}`
+  console.log(process.env.NODE_ENV)
+  let url = "";
+  if(process.env.NODE_ENV === 'production') {
+    url = "http://139.186.167.136:10003/renren-fast"
+  }else{
+    url = '/proxyApi/renren-fast'
+  }
+  return  url + actionName;
 }
 
 /**

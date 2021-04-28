@@ -14,7 +14,7 @@ module.exports = {
     // 代理列表, 是否开启代理通过[./dev.env.js]配置
     proxyTable: {
       '/proxyApi': {
-        target: 'http://119.3.62.74:10003',
+        target: 'http://139.186.167.136:10003',
         changeOrigin: true,
         pathRewrite: {
           '^/proxyApi': '/'
